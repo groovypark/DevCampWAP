@@ -25,3 +25,6 @@ var app = new Vue({
 
 // 실습 #1 - `another-global-component` 컴포넌트 전역 등록
 // <p>This is another global component</p> 를 template 으로 갖는 컴포넌트를 등록해보세요.
+Vue.component('another-global-component', {
+  template: `<p>This is another global component</p>`
+});

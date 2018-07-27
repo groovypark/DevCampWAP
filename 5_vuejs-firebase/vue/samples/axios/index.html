@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ str }} <button v-on:click="fetchData">click</button>
+    <div v-if="isTrue">vue.js</div>
+    <ul>
+      <li v-for="(item, index) in arr" :key="index">{{ item }}</li>
+    </ul>
+    <h1 v-bind:class="styleBinding">header</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+ var url = 'https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json'
+
+    new Vue({
+      el: '#app',
+      data: {
+        str: 'axios call',
+        arr: ["item1","item2","item3"],
+        isTrue: true,
+        styleBinding: 'blue-text'
+      },
+      methods: {
+        fetchData: function () {
+          axios.get(url)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+<style>
+  .blue-text {
+    color: blue;
+  }
+</style>

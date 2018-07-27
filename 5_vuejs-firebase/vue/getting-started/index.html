@@ -4,17 +4,51 @@
   </head>
   <body>
     <div id="app">
-      {{ message }}
+      <!-- <app-header v-bind:프롭스속성="상위컴넌트의 data 속성"></app-header> -->
+      <app-header
+        v-bind:props-data="b"
+        v-on:change-number="clickBtn2"
+        >
+      </app-header>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
     <script>
-      new Vue({
+      var vm2 = new Vue({})
+      Vue.component('app-header', {
+        //내용
+        template: `
+        <p>
+          졸려죽겟다 {{ propsData }}
+          <button v-on:click="clickBtn2">click</button>
+        </p>`,
+        methods: {
+          clickBtn2: function () {
+            console.log('click');
+          }
+        },
+        props: ['propsData']
+      });
+
+      var vm = new Vue({ 
         el: '#app',
+        components: {
+        },
         data: {
-          message: 'Hello Vue.js!'
-        }
+          b: 10
+        },
+        methods: {
+          clickBtn: function () {
+          console.log(clicked);
+          }
+        },
+        created: function() {
+          vm2.$on('pass-number', function () {
+            console.log('bus recevied');
+          })
+        },
       })
+
     </script>
   </body>
 </html>
