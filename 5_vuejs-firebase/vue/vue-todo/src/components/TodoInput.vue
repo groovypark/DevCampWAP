@@ -9,16 +9,17 @@
 
 <script>   
 export default {
-  data: function() {
+  data() {
     return {
       inputText: ''
     }
   },
   methods: {
-    addTodo: function(value) {
+    addTodo(value) {
       if(this.inputText !== '') {
-        var value = this.inputText;
-        this.$emit('add', value);
+        const value = this.inputText;
+        // this.$emit('add', value);
+        this.$store.commit('addTodoItem',value)
         this.inputText = '';
       }
     }

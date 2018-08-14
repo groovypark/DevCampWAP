@@ -1,14 +1,33 @@
 <template>
   <div>
     <header>
-      <h1>TODO it!</h1>
+      <h1>{{ this.$store.getters.reverseMessage }}</h1>
+      <!-- <h1>{{ this.reverseMessage }}</h1> -->
     </header>
   </div>
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex'
 
+export default {
+  // data() {
+  //   return {
+  //     headerMessage: 'Todo App'
+  //   }
+  // },
+  computed: {
+    // reverseHeader() {
+    //   return this.headerMessage+ '!!'
+    // },
+    reverseMessage() {
+      return this.$store.getters.reverseMessage
+    },
+    // ...mapGetters(['reverseMessage'])
+  },
+  // created() {
+  //   console.log(this);
+  // },
 }
 </script>
 

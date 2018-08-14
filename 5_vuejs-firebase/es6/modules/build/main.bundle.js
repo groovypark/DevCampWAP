@@ -119,6 +119,10 @@ function substract(a, b) {
 
 var pi = exports.pi = 3.14;
 
+// export {
+//   sum, substract, pi
+// }
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.bundle.js.map

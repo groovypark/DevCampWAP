@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul class="ul">
-      <li class="li shadow" v-for="(todoItem, index) in propsdata" :key="index">
+      <li class="li shadow" v-for="(todoItem, index) in this.$store.state.todoItems" :key="index">
         {{ todoItem }}
-        <span class="removeBtn" v-on:click="removeTodo(todoItem,index)">
+        <span class="removeBtn" v-on:click="removeTodo({ todoItem,index })">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -12,12 +12,31 @@
 </template>
 
 <script scoped>
+import { mapMutations } from 'vuex'
+
 export default {
-  props: ['propsdata'],
+  // props: ['propsdata'],
   methods: {
-    removeTodo: function(todoItem, index) {
-      this.$emit('removeTodo', todoItem, index);
-    }
+    // mapMutations([
+    //   메서드 이름 = 뮤테이션 이름
+    //   removeTodo: 'removeTodo'
+    //   'removeTodo'
+    // ]),
+    // mapMutations([
+    //   해당 컴포넌트에서 트리거되는 메서드 이름 = 스토어의 뮤테이션 이름
+    //   removeTodo: 'removeTodoItems'
+    // ])
+
+    // payload가 자동으로 전달됨
+    ...mapMutations(['reomveTodo'])
+
+    // removeTodo(payload) {
+    //   // const payload = {
+    //   //   todoItem: todoItem,
+    //   //   index: index
+    //   // }
+    //   this.$store.commit('removeTodoItem', payload);
+    // }
   }
 }
 </script>

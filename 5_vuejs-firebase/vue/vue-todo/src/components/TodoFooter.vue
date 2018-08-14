@@ -7,15 +7,18 @@
 </template>
 
 <script>
-import Vue from 'vue'
-var bus = new Vue({
+// import Vue from 'vue'
+// var bus = new Vue({
 
-})
+// })
+
+// import { mapMutations } from 'vuex'
 
 export default {
   methods: {
-    removeAllItems:  function() {
-      this.$emit('clear')
+    removeAllItems() {
+      // this.$emit('clear')
+      this.$store.commit('clearAllItems')
     }
   }
 }

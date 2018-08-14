@@ -1,15 +1,11 @@
 <template>
   <div id="app">
     <todo-header></todo-header>
-    <todo-input
-      v-on:add="addTodoItem">
+    <todo-input>
     </todo-input>
-    <todo-list 
-      v-on:removeTodo="removeTodoItem"
-      v-bind:propsdata="todoItems">
+    <todo-list>
     </todo-list>
-    <todo-footer
-      v-on:clear="clearAllItems">
+    <todo-footer>
     </todo-footer>
   </div>
 </template>
@@ -27,33 +23,33 @@ export default {
     'TodoList': TodoList,
     'TodoFooter': TodoFooter
   },
-  data: function() {
-    return {
-      todoItems: []
-    }
-  },
-  created: function() {
-    for (var i=0; i<localStorage.length; i++) {
-      if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-        this.todoItems.push(localStorage.key(i));
-      }
-    }
-  },
-  methods: {
-    addTodoItem: function(value) {
-      this.todoItems.push(value);
-      localStorage.setItem(value,value)
-      this.inputText = ''
-    },
-    removeTodoItem: function(todoItem, index) {
-      this.todoItems.splice(index,1);
-      localStorage.removeItem(todoItem);
-    },
-    clearAllItems: function() {
-      this.todoItems = [];
-      localStorage.clear;
-    }
-  }
+  // data() {
+  //   return {
+  //     todoItems: []
+  //   }
+  // },
+  // created() {
+  //   for (var i=0; i<localStorage.length; i++) {
+  //     if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
+  //       this.todoItems.push(localStorage.key(i));
+  //     }
+  //   }
+  // },
+  // methods: {
+  //   addTodoItem(value) {
+  //     this.todoItems.push(value);
+  //     localStorage.setItem(value,value)
+  //     this.inputText = ''
+  //   },
+  //   removeTodoItem(todoItem, index) {
+  //     this.todoItems.splice(index,1);
+  //     localStorage.removeItem(todoItem);
+  //   },
+  //   clearAllItems() {
+  //     this.todoItems = [];
+  //     localStorage.clear;
+  //   }
+  // }
 }
 </script>
 
